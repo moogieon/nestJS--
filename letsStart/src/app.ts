@@ -1,11 +1,19 @@
 import * as express from "express";
+import { Cat, CatType } from "./app.model";
 const app: express.Express = express();
 const port: number = 8000;
 
+const data = [1, 2, 3, 4];
+
 app.get("/test", (req: express.Request, res: express.Response) => {
-  res.send({name:"Lee",age:20,friends:["Kim","Park"]});
+  console.log(req);
+  res.send({ cats: Cat });
+});
+
+app.post("/test", (req, res) => {
+  res.send({ person: "Yoon" });
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port at http://localhost:${port}`);
+  console.log(`server in on... http://localhost:${port}`);
 });
