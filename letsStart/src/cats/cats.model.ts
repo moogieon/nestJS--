@@ -82,4 +82,31 @@ export const Cat: CatType[] = [
 
     friends: [],
   },
+  
+  {
+    id: "weju0fj20qj",
+
+    name: "red",
+
+    age: 2,
+
+    species: "Sharm",
+
+    isCute: false,
+
+    friends: [],
+  },
+  {
+    id: "weju0fj20qj",
+
+    name: "orange",
+
+    age: 2,
+
+    species: "Russian Blue",
+
+    isCute: false,
+
+    friends: [],
+  },
 ];
