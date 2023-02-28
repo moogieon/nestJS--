@@ -12,3 +12,8 @@ DBMS (Dtavase Management System)
     - SQL을 사용하지 않는 DBMS
     - Redis, MongoDB
     - 단점을 보안하기 위해 나옴
+
+
+
+<DB 설정>
+몽고DB -> DataBase 생성 -> 네트워크 Access, Database Access (권한 부여 필수) -> connect -> MongoDB Compass 
