@@ -12,7 +12,7 @@ export type CatType = {
   friends: string[];
 };
 
-export const Cat: CatType[] = [
+export const Dog: CatType[] = [
   {
     id: "fsduifh",
 
