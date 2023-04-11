@@ -168,5 +168,89 @@ export const Dog: CatType[] = [
     isCute: false,
 
     friends: [],
+  }, {
+    id: "weju0fj20qj",
+
+    name: "orange",
+
+    age: 2,
+
+    species: "Russian Blue",
+
+    isCute: false,
+
+    friends: [],
+  }, {
+    id: "weju0fj20qj",
+
+    name: "orange",
+
+    age: 2,
+
+    species: "Russian Blue",
+
+    isCute: false,
+
+    friends: [],
+  }, {
+    id: "weju0fj20qj",
+
+    name: "orange",
+
+    age: 2,
+
+    species: "Russian Blue",
+
+    isCute: false,
+
+    friends: [],
+  }, {
+    id: "weju0fj20qj",
+
+    name: "orange",
+
+    age: 2,
+
+    species: "Russian Blue",
+
+    isCute: false,
+
+    friends: [],
+  }, {
+    id: "weju0fj20qj",
+
+    name: "orange",
+
+    age: 2,
+
+    species: "Russian Blue",
+
+    isCute: false,
+
+    friends: [],
+  }, {
+    id: "weju0fj20qj",
+
+    name: "orange",
+
+    age: 2,
+
+    species: "Russian Blue",
+
+    isCute: false,
+
+    friends: [],
+  }, {
+    id: "weju0fj20qj",
+
+    name: "orange",
+
+    age: 2,
+
+    species: "Russian Blue",
+
+    isCute: false,
+
+    friends: [],
   },
 ];
