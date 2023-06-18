@@ -325,3 +325,56 @@ Interceptors는 AOP(관점 지향 프로그레밍) 영감을 받은 기능
  그리고  console.log('Before...'); 경우 보통 미들웨어에서 처리를 하기떄문에 컨트롤러가 보냈을때 데이터를 받아서 가공해서 필터처럼 사용 할 수 있는것
 
   [요청]-[미들웨어]-[인터셉터(pre before)]-[컨트롤러]-[인터셉터(post after)]-[서비스]-[exception] 
+
+  >> mongoose(MongoDB를 생으로 안쓰고 직관적이고 스키마 제공해서 편하게 쓰려고 나온것)
+  nestjs 는 mongoose 타입스크립트에 직관적으로 상용할 수 있게 더 나은 인터페이스제공 한다.
+
+  MongoDB를 url 을 메인 모듈에 imports 해주는데 환경변수 설정을 해서 보안을 유지하자 
+
+  ```
+   npm i --save @nestjs/config
+
+  ```
+  express 에서는 .env 를 사용하려면 따로 설치해야하지만 
+  네스트에서 config 모듈 설치하면 사용 가능하다.
+  모듈에  ConfigModule.forRoot() imports 해줘야 사용 가능
+
+  * 모듈이 여러개가ㅣ 있고 app 모듈에 임폴트 되어서 main.ts 에서 실행된다.
+
+- 기본적으로 nodejs와 mgDB 연결할때 셋팅해줘야 할게 있다.
+
+mongoose 버전 6.0 이상부터는 useFindAndModify, useCreateIndex 옵션을 설정안해주셔도 됩니다!
+2023.01.05 기준  몽고디비 설정할때, 기본으로 다 지원하기 때문에
+추가 설정을 할 필요가 없다고 하네요!
+
+- useNewUrlParser : true
+
+    - mongodb url을 읽을 수 있도록 설정합니다. 설정하지 않으면 다음과 같은 경고가 뜹니다. DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+
+- useUnifiedTopology : true
+
+    - 최신 mongodb 드라이버 엔진을 사용하도록 설정합니다. (안정적인 연결을 유지할 수 없는 경우를 제외하고 이 옵션을 true로 설정해야 합니다.)
+
+개발중 몽구스 쿼리를 로그로 찍을 수 잇다 
+
+```
+import * as mongoose from "mongoose"
+```
+
+schema 설정시 varidation 을 설정 해줘야하는데 (이메일 형식 같은) 자동으로 해주는 nest 라이브러가 있다.
+
+```
+yarn add class-validator class-transformer
+
+```
+class-validator 을 사용하려면 main.ts 에 등록을 해줘야 한다. 
+```
+ app.useGlobalPipes(new ValidationPipe());
+
+```
+
+>> DTO 페턴
+![img](https://github.com/moogieon/prod-meat/assets/86825253/84c62d53-a86f-4110-b061-57555d8ac55c)
+
+
+
