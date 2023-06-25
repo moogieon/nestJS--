@@ -377,4 +377,143 @@ class-validator 을 사용하려면 main.ts 에 등록을 해줘야 한다.
 ![img](https://github.com/moogieon/prod-meat/assets/86825253/84c62d53-a86f-4110-b061-57555d8ac55c)
 
 
+자동 403 에러 
 
+throw new UnauthorizedException("중복된 아이디입니다.")
+비밀번호 암호화 
+
+```
+yarn add bcrypt 
+yarn add -D @types/bcrypt
+```
+
+암호화된 비밀번호 숨기기 
+schema 에서 
+버추얼 필드 
+(readOnlyData 는 사용자한테 가상으로 필요한 데이터만 필터링 해서 나간다.)
+
+```
+virtual("readOnlyData").get(function(this:Cat)){
+    return {
+        id:this.id
+        email:this.email
+    }
+}
+```
+
+>> API 문서 
+
+nest는 기본적으로 express 프레임워크를 사용한다.
+Fastify 는 espress와 비슷한 웹 프레임 워크 
+구조적으로 Express 보다 훨씬 빠르다. 
+
+속도를 높힐 필요가 있는 API 리팩토링 = Fastify
+기본적인 API = Express
+
+문서 자동 작성 라이브러리
+
+```
+yarn add @nestjs/swagger-ui-express
+```
+
+``` -main.ts-
+
+ const config = new DocumentBuilder()
+    .setTitle("title")
+    .setDescription("descripton")
+    .setVersion("version")
+    .build();
+  const document: OpenAPIObject = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('docs', app, document);
+```
+
+API 설명 적는법
+
+```  -meats.controller.ts-
+
+  @ApiOperation({ summary: '고기 상세정보' })
+```
+API 예시 설정
+
+``` -meats.request.dto-
+
+ @ApiProperty({
+    example: 'pyyye@naver.com',
+    description: 'email',
+    required: true,
+  })
+
+```
+
+Response 설정
+
+``` -meats.controller.ts-
+ @ApiResponse({
+    status: 500,
+    description: 'Server Error...',
+  })
+  @ApiOperation({ summary: '회원가입' })
+```
+
+Response DTO 설정
+
+``` -meats.dto.ts-
+
+ @ApiProperty({
+    example: '3254125215',
+    description: 'email',
+    required: true,
+  })
+  id: string;
+
+ -meats.controller.ts- 
+  @ApiResponse({
+    status: 500,
+    description: 'Server Error...',
+  })
+  @ApiOperation({ summary: '회원가입' })
+
+```
+
+재사용성을 위해서 schema 에서 상속받아 사용하기
+Dto 설정을 schema 설정해서 상속해서 사용하기!
+
+``` -meats.dto.ts-
+export class ReadOnlyMeatDto extends Meat {
+  @ApiProperty({
+    example: '3254125215',
+    description: 'email',
+    required: true,
+  })
+  id: string;
+}
+
+```
+
+필요한 부분만 가져오는 방법  'PickType()' 
+반대로 필요 없는 부분을 뺴는 방법 'OmitType()'
+
+```
+export class ReadOnlyMeatDto extends PickType(Meat, [
+  'email',
+  'name',
+] as const) {
+  @ApiProperty({
+    example: '3254125215',
+    description: 'email',
+    required: true,
+  })
+  id: string;
+}
+```
+
+>> CORS 설정 방법
+
+``` -main.ts-
+
+  app.enableCors({
+    origin: true, //개발 할때는 true, 특정 url 적어야함
+    credentials: true,
+  });
+  
+```
